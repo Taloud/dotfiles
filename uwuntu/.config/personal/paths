@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+addToPath /usr/local/go/bin
+addToPath $HOME/work/wrapper
+addToPath $HOME/.yarn/bin
+addToPath /usr/lib/llvm-8/bin
+
+# ccache
+addToPathFront /usr/lib/ccache
