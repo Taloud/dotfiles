@@ -95,6 +95,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source $HOME/.zsh_profile
+export PATH="$HOME/bin/.local/bin:$PATH"
 export BAT_THEME="gruvbox-dark"
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME{{/.oh-my-zs}}h
 export DOTFILES=$HOME/.dotfiles
