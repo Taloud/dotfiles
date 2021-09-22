@@ -46,6 +46,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'sainnhe/gruvbox-material'
 
 Plug 'w0rp/ale'
+
+" prettier
+Plug 'sbdchd/neoformat'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
@@ -55,7 +58,7 @@ colorscheme gruvbox
 set background=dark
 filetype plugin on
 
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
@@ -87,6 +90,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Keep the search centered in the screen
+nnoremap Y yg$
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
