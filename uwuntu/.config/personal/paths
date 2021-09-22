@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-addToPath $HOME/.yarn/bin
+addToPath $HOME/.local/bin

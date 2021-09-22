@@ -10,7 +10,6 @@ alias vim="$VIM"
 alias work="cd ~/work"
 
 alias python="python3"
-alias cbp="cat $DOTFILES/zsh/.config/.zsh_profile"
 alias ebp="$VIM $DOTFILES/.zsh_profile"
 alias etc="$VIM $DOTFILES/tmux/.tmux.conf"
 alias enrc="nvim $DOTFILES/nvim/.config/nvim/init.vim"
