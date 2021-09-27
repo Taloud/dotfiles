@@ -14,9 +14,9 @@ nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.sho
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-requre'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
-require'lspconfig'.yamlls.setup{ on_attach=require'completion'.on_attach }
-require'lspconfig'.cssls.setup{ on_attach=require'completion'.on_attach, capabilities = capabilities }
-require'lspconfig'.html.setup{filetypes = { "html", "twig" }, on_attach=require'completion'.on_attach, capabilities = capabilities }
-require'lspconfig'.intelephense.setup{ on_attach=require'completion'.on_attach, init_options = {licenceKey = 'XXXXXXXXXXX'} }
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.yamlls.setup{}
+require'lspconfig'.cssls.setup{ capabilities = capabilities }
+require'lspconfig'.html.setup{filetypes = { "html", "twig" }, capabilities = capabilities }
+require'lspconfig'.intelephense.setup{ init_options = {licenceKey = 'XXXXXXXXXXX'} }
 EOF
