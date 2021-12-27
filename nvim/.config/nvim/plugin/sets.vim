@@ -1,3 +1,20 @@
+"--------------------------------------------------------------------------
+" General settings
+"--------------------------------------------------------------------------
+
+set path+=**
+" Nice menu when typing `:find *.py`
+set wildmode=longest,list,full
+set wildmenu
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
+
 set guicursor=
 set relativenumber
 set nohlsearch
@@ -19,6 +36,13 @@ set scrolloff=8
 set noshowmode
 set signcolumn=yes
 set mouse=a
+
+set ignorecase
+set smartcase
+set list
+set listchars=tab:▸\ ,trail:·
+set sidescrolloff=8
+set nojoinspaces
 
 " Give more space for displaying messages.
 set cmdheight=1

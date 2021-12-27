@@ -2,12 +2,11 @@ nnoremap <C-Left> :call AfPPAlternatePluthPluth()<CR>
 nnoremap <C-Up> :call AfPPAlternate()<CR>
 inoremap <C-Left> <esc>:call AfPPAlternatePluthPluth()<CR>
 inoremap <C-Up> <esc>:call AfPPAlternate()<CR>
-nnoremap <C-j> :cnext<CR>zz
-nnoremap <C-k> :cprev<CR>zz
+
 " nnoremap <leader>k :lnext<CR>zz
 " nnoremap <leader>j :lprev<CR>zz
-nnoremap <C-q> :call ToggleQFList(1)<CR>
-nnoremap <leader>q :call ToggleQFList(0)<CR>
+" nnoremap <C-q> :call ToggleQFList(1)<CR>
+" nnoremap <leader>q :call ToggleQFList(0)<CR>
 
 let g:the_primeagen_qf_l = 0
 let g:the_primeagen_qf_g = 0

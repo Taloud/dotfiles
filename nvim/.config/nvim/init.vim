@@ -1,95 +1,106 @@
-set path+=**
-
-" Nice menu when typing `:find *.py`
-set wildmode=longest,list,full
-set wildmenu
-" Ignore files
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=**/coverage/*
-set wildignore+=**/node_modules/*
-set wildignore+=**/android/*
-set wildignore+=**/ios/*
-set wildignore+=**/.git/*
-
-"Dunno where to put this before the require('coq') call
-let g:coq_settings = { 'auto_start': 'shut-up', 'display.icons.mode': 'none' }
-
+"                           ______     ______________
+"                          |######|   |#############W
+"                          |######|   |############W
+"                          |######|   |###########'
+"                          |######|   |###### ¯¯¯
+"                          |#####################|
+"                          |#####################|
+"                          |######|   |######|
+"                          |######|   |######|
+"                          |######|   |######|
+"                          |######|   |######|
+"                           ¯¯¯¯¯¯     ¯¯¯¯¯¯
+"
+"
+"--------------------------------------------------------------------------
+" Plugins
+"--------------------------------------------------------------------------
 
 call plug#begin('~/.vim/plugged')
 
-" Neovim lsp Plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
-
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'mbbill/undotree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'theprimeagen/vim-be-good'
-Plug 'gruvbox-community/gruvbox'
-Plug 'lumiliet/vim-twig'
-Plug 'qbbr/vim-symfony'
-Plug 'tpope/vim-commentary'
-Plug 'joukevandermaas/vim-ember-hbs'
-Plug 'preservim/nerdtree'
-
-" telescope requirements...
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'sainnhe/gruvbox-material'
-
-Plug 'w0rp/ale'
-
-" prettier
-Plug 'sbdchd/neoformat'
-" post install (yarn install | npm install) then load plugin only for editing supported files
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+source ~/.config/nvim/plugins/airline.vim
+source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/dispatch.vim
+source ~/.config/nvim/plugins/editorconfig.vim
+source ~/.config/nvim/plugins/floaterm.vim
+source ~/.config/nvim/plugins/fugitive.vim
+source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/gruvbox.vim
+source ~/.config/nvim/plugins/harpoon.vim
+source ~/.config/nvim/plugins/heritage.vim
+source ~/.config/nvim/plugins/kanagawa.vim
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/pasta.vim
+source ~/.config/nvim/plugins/peekaboo.vim " a degager peut etre
+source ~/.config/nvim/plugins/phpactor.vim
+source ~/.config/nvim/plugins/polyglot.vim
+source ~/.config/nvim/plugins/rooter.vim
+source ~/.config/nvim/plugins/sayonara.vim
+source ~/.config/nvim/plugins/smooth-scroll.vim
+source ~/.config/nvim/plugins/telescope.vim
+source ~/.config/nvim/plugins/tmux.vim
+source ~/.config/nvim/plugins/vim-test.vim
+" source ~/.config/nvim/plugins/which-key.vim
 
 call plug#end()
+doautocmd User PlugLoaded
 
-colorscheme gruvbox
-set background=dark
+" Can't be in source file cause of order of loading
+" colorscheme kanagawa
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+colorscheme gruvbox-material
 filetype plugin on
-
-let g:vim_be_good_log_file = 1
-let g:vim_apm_log = 1
 
 if executable('rg')
     let g:rg_derive_root='true'
 endif
 
 let loaded_matchparen = 1
+lua require("groot")
+
+"--------------------------------------------------------------------------
+" Key maps
+"--------------------------------------------------------------------------
+
 let mapleader = " "
 
-nnoremap <leader>cP :lua require("contextprint").add_statement()<CR>
-nnoremap <leader>cp :lua require("contextprint").add_statement(true)<CR>
+nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
+nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
+nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 
-nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
+" Allow gf to open non-existent files
+map gf :edit <cfile><cr>
+
+" Reselect visual selection after indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" Maintain the cursor position when yanking a visual selection
+" http://ddrscott.github.io/blog/2016/yank-without-jank/
+vnoremap y myy`y
+vnoremap Y myY`y
+
+" Make Y behave like the other capitals
+nnoremap Y y$
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>u :UndotreeShow<CR>
-" nnoremap <leader>pv :NERDTreeToggle<CR>
-nnoremap <leader>by :Neoformat<CR>
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+
+nnoremap <silent> <C-f> : silent !tmux neww tmux-sessionizer<CR>
+
+nnoremap <leader>by :Format<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
-nnoremap <Leader>rp :resize 100<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Keep the search centered in the screen
-nnoremap Y yg$
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
@@ -108,8 +119,17 @@ inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
+nmap <leader>Q :bufdo bdelete<cr>
+
+" Quick fix list up and down
+nnoremap <C-j> :cnext<CR>zz
+nnoremap <C-k> :cprev<CR>zz
+
 inoremap <C-c> <esc>
 
+"--------------------------------------------------------------------------
+" Miscellaneous
+"--------------------------------------------------------------------------
 command Ggfl :Gpush --force-with-lease
 
 fun! EmptyRegisters()

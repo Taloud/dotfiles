@@ -1,3 +1,11 @@
+Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+
+let g:NERDTreeDirArrowExpandable = '▹'
+let g:NERDTreeDirArrowCollapsible = '▿'
+
 function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
@@ -31,4 +39,5 @@ function! ToggleTree()
 endfunction
 
 " open NERDTree with ctrl + n
-nmap<C-n> :call ToggleTree()<CR>
+nnoremap <leader>pv :call ToggleTree()<CR>
+
