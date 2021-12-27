@@ -26,6 +26,7 @@ source ~/.config/nvim/plugins/editorconfig.vim
 source ~/.config/nvim/plugins/floaterm.vim
 source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/git-worktree.vim
 source ~/.config/nvim/plugins/gruvbox.vim
 source ~/.config/nvim/plugins/harpoon.vim
 source ~/.config/nvim/plugins/heritage.vim
