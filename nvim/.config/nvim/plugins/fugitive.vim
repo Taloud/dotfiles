@@ -1,6 +1,5 @@
 Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb'
 
-nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gb :GBranches<CR>
 nnoremap <leader>ga :Git fetch --all<CR>
 nnoremap <leader>grum :Git rebase upstream/master<CR>
