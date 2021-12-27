@@ -37,6 +37,7 @@ source ~/.config/nvim/plugins/pasta.vim
 source ~/.config/nvim/plugins/peekaboo.vim " a degager peut etre
 source ~/.config/nvim/plugins/phpactor.vim
 source ~/.config/nvim/plugins/polyglot.vim
+source ~/.config/nvim/plugins/projectionist.vim
 source ~/.config/nvim/plugins/rooter.vim
 source ~/.config/nvim/plugins/sayonara.vim
 source ~/.config/nvim/plugins/smooth-scroll.vim
