@@ -16,6 +16,8 @@
 " Plugins
 "--------------------------------------------------------------------------
 
+let mapleader = " "
+
 call plug#begin('~/.vim/plugged')
 
 source ~/.config/nvim/plugins/airline.vim
@@ -66,7 +68,6 @@ lua require("groot")
 " Key maps
 "--------------------------------------------------------------------------
 
-let mapleader = " "
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
