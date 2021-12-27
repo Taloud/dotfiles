@@ -29,7 +29,6 @@ source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/gruvbox.vim
 source ~/.config/nvim/plugins/harpoon.vim
 source ~/.config/nvim/plugins/heritage.vim
-source ~/.config/nvim/plugins/kanagawa.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/pasta.vim
 source ~/.config/nvim/plugins/peekaboo.vim " a degager peut etre
@@ -46,12 +45,11 @@ source ~/.config/nvim/plugins/vim-test.vim
 call plug#end()
 doautocmd User PlugLoaded
 
-" Can't be in source file cause of order of loading
-" colorscheme kanagawa
 if (has("termguicolors"))
   set termguicolors
 endif
 
+" Can't be in source file cause of order of loading
 colorscheme gruvbox-material
 filetype plugin on
 
@@ -60,6 +58,7 @@ if executable('rg')
 endif
 
 let loaded_matchparen = 1
+
 lua require("groot")
 
 "--------------------------------------------------------------------------

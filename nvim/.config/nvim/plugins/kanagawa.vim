@@ -1,1 +1,0 @@
-Plug 'rebelot/kanagawa.nvim'

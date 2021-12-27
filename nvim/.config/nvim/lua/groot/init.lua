@@ -1,6 +1,5 @@
 require("groot.telescope")
 require("groot.harpoon")
-require("groot.kanagawa")
 
 P = function(v)
   print(vim.inspect(v))
