@@ -1,0 +1,11 @@
+# Open current directory in finder
+alias finder="open ."
+
+alias pr="pull-request.sh"
+
+# cd = cd && ls
+c() {
+    cd $1;
+    ls;
+}
+alias cd="c"

@@ -7,14 +7,12 @@ alias xsc="xclip -selection clipboard"
 
 #!/usr/bin/env bash
 alias vim="$VIM"
-alias work="cd ~/work"
 
 alias python="python3"
 alias ebc="$VIM $DOTFILES/zsh/.zshrc"
 alias ebp="$VIM $DOTFILES/zsh/.zsh_profile"
 alias etc="$VIM $DOTFILES/tmux/.tmux.conf"
 alias enrc="nvim $DOTFILES/nvim/.config/nvim/init.vim"
-alias eirc="nvim $XDG_CONFIG_HOME/i3/i3config"
 alias bp="dotFileInstall && source ~/.zshrc"
 alias dotFileInstall="$DOTFILES/install"
 
