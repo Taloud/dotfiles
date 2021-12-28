@@ -8,3 +8,7 @@ nnoremap <leader>grom :Git rebase origin/master<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+
+nnoremap <leader>rh :tabp<CR>
+nnoremap <leader>rl :tabn<CR>
+nnoremap <leader>rd :windo bd<CR>
