@@ -1,5 +1,5 @@
-require("groot.telescope")
-require("groot.harpoon")
+require("taloud.telescope")
+require("taloud.harpoon")
 
 P = function(v)
   print(vim.inspect(v))

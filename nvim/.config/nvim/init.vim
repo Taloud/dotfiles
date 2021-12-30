@@ -69,7 +69,7 @@ endif
 
 let loaded_matchparen = 1
 
-lua require("groot")
+lua require("taloud")
 
 "--------------------------------------------------------------------------
 " Key maps
@@ -132,6 +132,9 @@ nmap <leader>Q :bufdo bdelete<cr>
 " Quick fix list up and down
 nnoremap <C-j> :cnext<CR>zz
 nnoremap <C-k> :cprev<CR>zz
+
+" Who needs this tbh ?
+nn Q <NOP>
 
 inoremap <C-c> <esc>
 
