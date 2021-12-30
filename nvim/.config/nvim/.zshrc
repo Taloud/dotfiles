@@ -1,1 +1,0 @@
-/Users/groot/dotfiles/backup/.zshrc
