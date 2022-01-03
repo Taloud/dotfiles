@@ -1,4 +1,4 @@
-source ~/dotfiles/zsh/antigen.zsh
+source ~/.dotfiles/zsh/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -25,10 +25,10 @@ eval "$(direnv hook zsh)"
 DEFAULT_USER=$USER
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
 # Load aliases
-source ~/dotfiles/zsh/zsh_aliases
+source ~/.dotfiles/zsh/zsh_aliases
 export PATH="/usr/local/sbin:$PATH"
 export BAT_THEME="gruvbox-dark"
 export ZSH=$HOME/.oh-my-zsh
-export DOTFILES=$HOME/dotfiles
+export DOTFILES=$HOME/.dotfiles
 source $HOME/.zsh_profile
 export REVIEW_BASE=dev-master
