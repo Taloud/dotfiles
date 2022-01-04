@@ -1,3 +1,10 @@
+export XDG_CONFIG_HOME=$HOME/.config
+ 
+PERSONAL=$XDG_CONFIG_HOME/personal
+for i in `find -L $PERSONAL`; do
+    source $i
+done
+
 VIM="nvim"
 
 # Where should I put you?
