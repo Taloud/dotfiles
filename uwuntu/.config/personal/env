@@ -4,7 +4,7 @@
 # Required for x applications
 # setxkbmap -option caps:ctrl_modifier
 
-export STOW_FOLDERS="bin,nvim,tmux,uwuntu,zsh,xkb"
+export STOW_FOLDERS="bin,kitty,nvim,tmux,uwuntu,zsh,xkb"
 
 addToPath() {
     if [[ "$PATH" != *"$1"* ]]; then
