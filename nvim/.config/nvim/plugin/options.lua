@@ -50,7 +50,6 @@ opt.number = true -- But show the actual number for the line we're on
 opt.cursorline = true -- Highlight the current line
 opt.updatetime = 1000 -- Make updates happen faster
 opt.belloff = "all" -- Just turn the dang bell off
-opt.clipboard = "unnamedplus"
 
 -- Helpful related items:
 --   1. :center, :left, :right
