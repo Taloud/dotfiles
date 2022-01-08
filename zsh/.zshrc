@@ -32,3 +32,5 @@ export ZSH=$HOME/.oh-my-zsh
 export DOTFILES=$HOME/.dotfiles
 source $HOME/.zsh_profile
 export REVIEW_BASE=dev-master
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

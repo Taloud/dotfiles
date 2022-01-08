@@ -34,7 +34,7 @@ opt.incsearch = true -- Makes search act like search in modern browsers
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 opt.showmode = false
 opt.signcolumn = 'yes'
-opt.mouse = "n"
+opt.mouse = "a"
 opt.ignorecase = true -- Ignore case when searching...
 opt.smartcase = true -- ... unles there is a capital letter in the query
 opt.list = true
@@ -47,15 +47,10 @@ opt.showcmd = true
 opt.cmdheight = 1 -- Height of the command bar
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.number = true -- But show the actual number for the line we're on
-opt.cursorline = true -- Highlight the current line
+--opt.cursorline = true -- Highlight the current line
 opt.updatetime = 1000 -- Make updates happen faster
 opt.belloff = "all" -- Just turn the dang bell off
 
--- Helpful related items:
---   1. :center, :left, :right
---   2. gw{motion} - Put cursor back after formatting motion.
---
--- TODO: w, {v, b, l}
 opt.formatoptions = opt.formatoptions
   - "a" -- Auto formatting is BAD.
   - "t" -- Don't auto format my code. I got linters for that.

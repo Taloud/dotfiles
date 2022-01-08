@@ -1,1 +1,0 @@
-Plug 'tpope/vim-commentary' | Plug 'jessarcher/vim-context-commentstring' " For files with more than one syntax

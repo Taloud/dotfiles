@@ -4,7 +4,7 @@
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+nnoremap <Leader><CR> :so ~/.config/nvim/init.lua<CR>
 
 " Allow gf to open non-existent files
 map gf :edit <cfile><cr>
@@ -127,3 +127,10 @@ augroup THE_PRIMEAGEN
     " autocmd VimEnter * :VimApm
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END
+
+" TODO: MOVE THIS IN ANOTHER FILE
+augroup PhpactorMappings
+    au!
+    au FileType php nmap <buffer> <Leader>mm :PhpactorContextMenu<CR>
+augroup END
+
