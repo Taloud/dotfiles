@@ -47,7 +47,7 @@ opt.showcmd = true
 opt.cmdheight = 1 -- Height of the command bar
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.number = true -- But show the actual number for the line we're on
---opt.cursorline = true -- Highlight the current line
+opt.cursorline = true -- Highlight the current line
 opt.updatetime = 1000 -- Make updates happen faster
 opt.belloff = "all" -- Just turn the dang bell off
 

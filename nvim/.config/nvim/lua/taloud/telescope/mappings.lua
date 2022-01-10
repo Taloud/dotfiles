@@ -10,11 +10,6 @@ nmap {
 nmap { "<C-p>", require("telescope.builtin").git_files }
 nmap { "<leader>pb", require("telescope.builtin").buffers }
 
--- Lsp remap
-nmap { "<leader>ra", require("telescope.builtin").lsp_code_actions }
-nmap { "<leader>rr", require("telescope.builtin").lsp_references }
-nmap { "<leader>ri", require("telescope.builtin").lsp_implementations }
-
 -- Direct to folder Remap
 nmap {
   "<leader>vrc",
@@ -32,3 +27,13 @@ nmap { "<leader>gm", require("telescope").extensions.git_worktree.create_git_wor
 -- Helper remap
 nmap { "<leader>pf", require("telescope.builtin").find_files }
 nmap { "<leader>vh", require("telescope.builtin").help_tags }
+
+
+-- LSP remap
+nmap { "gd", require("telescope.builtin").lsp_definitions }
+nmap { "gT", require("telescope.builtin").lsp_type_definitions }
+nmap { "gi", require("telescope.builtin").lsp_implementations }
+nmap { "gr", require("telescope.builtin").lsp_references }
+nmap { "gl", require("telescope.builtin").diagnostics }
+nmap { "ga", require("telescope.builtin").lsp_code_actions }
+

@@ -13,7 +13,7 @@ local lspServers = {
   html = {},
   intelephense = {},
   jsonls = {},
-  phpactor = {},
+  -- phpactor = {} only use intelephense for now,
   sumneko_lua = {},
   tsserver = {},
   vimls = {},
@@ -28,16 +28,6 @@ for lspServer, opts in pairs(lspServers) do
             on_attach = require("taloud.lsp.handlers").on_attach,
             capabilities = require("taloud.lsp.handlers").capabilities,
           }
-
-         if server.name == "jsonls" then
-           local jsonls_opts = require("taloud.lsp.settings.jsonls")
-           opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-         end
-
-         if server.name == "sumneko_lua" then
-           local sumneko_opts = require("taloud.lsp.settings.sumneko_lua")
-           opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-         end
 
           requested_server:setup(opts)
       end)

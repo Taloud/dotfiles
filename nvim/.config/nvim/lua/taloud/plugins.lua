@@ -80,8 +80,8 @@ return packer.startup(function(use)
     config = function() require"nvim-tree".setup {} end
   }
 
-  -- PHP Tools
-  use { "phpactor/phpactor", run = "composer install --no-dev -o", ft = "php" }
+  -- PHP Tools but for now only use intelephense
+  -- use { "phpactor/phpactor", run = "composer install --no-dev -o", ft = "php" }
 
   -- Code Helper
   use 'tpope/vim-projectionist'
@@ -92,6 +92,7 @@ return packer.startup(function(use)
         require('Comment').setup()
     end
   }
+
   -- SmoothScroll
   use 'psliwka/vim-smoothie'
 
@@ -104,7 +105,9 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+  use "nvim-treesitter/playground"
   use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "lumiliet/vim-twig"
 
   -- Snippet manager
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -124,10 +127,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use "onsails/lspkind-nvim"
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use 'folke/lsp-colors.nvim' -- Make gruvbox working on highlight
 
   -- Building Tools / Test Tools
   use { "tpope/vim-dispatch", cmd = { "Dispatch", "Make" } }
