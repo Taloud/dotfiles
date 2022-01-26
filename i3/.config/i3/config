@@ -231,5 +231,6 @@ exec_always --no-startup-id compton -f -D 1
 exec_always --no-startup-id sh ~/.local/bin/fehbg
 exec --no-startup-id xss-lock -- "~/.local/bin/i3lock.sh"
 
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id "~/.config/polybar/launch.sh"
+exec_always --no-startup-id "setxkbmap real-prog-dvorak"
 
