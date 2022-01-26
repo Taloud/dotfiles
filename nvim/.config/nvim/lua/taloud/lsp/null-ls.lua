@@ -12,8 +12,12 @@ null_ls.setup({
   debug = false,
   sources = {
     -- formatting.prettier.with({ extra_args = { "--single-quote", "--jsx-single-quote" } }),
+    formatting.phpcsfixer, -- use phpCsFixer for php file format instead of Intelephense
+    formatting.prettier.with({
+      extra_args = {"--single-quote"},
+      filetypes = {"css","scss"}
+    }),
     formatting.eslint, -- Use eslint for format js files. I disabled tsserver formating
     diagnostics.eslint, -- Use eslint for diagnostic js file
-    formatting.phpcsfixer -- use phpCsFixer for php file format instead of Intelephense
   },
 })

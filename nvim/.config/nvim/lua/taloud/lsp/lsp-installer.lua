@@ -32,10 +32,14 @@ for lspServer, opts in pairs(lspServers) do
   local server_available, requested_server = lsp_installer_servers.get_server(lspServer)
   if server_available then
       requested_server:on_ready(function (server)
-          table.insert(opts, {
-            on_attach = require("taloud.lsp.handlers").on_attach,
-            capabilities = require("taloud.lsp.handlers").capabilities,
-          })
+       local opts = {
+                  on_attach = require("taloud.lsp.handlers").on_attach,
+                  capabilities = require("taloud.lsp.handlers").capabilities,
+       }
+          -- table.insert(opts, {
+          --   on_attach = require("taloud.lsp.handlers").on_attach,
+          --   capabilities = require("taloud.lsp.handlers").capabilities,
+          -- })
 
           requested_server:setup(opts)
       end)
