@@ -36,6 +36,7 @@ for lspServer, opts in pairs(lspServers) do
                   on_attach = require("taloud.lsp.handlers").on_attach,
                   capabilities = require("taloud.lsp.handlers").capabilities,
        }
+
           -- table.insert(opts, {
           --   on_attach = require("taloud.lsp.handlers").on_attach,
           --   capabilities = require("taloud.lsp.handlers").capabilities,
