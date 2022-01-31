@@ -1,41 +1,29 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-# Take a screenshot and blur it
-image_file=/tmp/screen_lock.png
-resolution=$(xdpyinfo | grep dimensions | awk '{print $2}')
-filters='noise=alls=10,scale=iw*.05:-1,scale=iw*20:-1:flags=neighbor'
-#filters='gblur=sigma=50'
+rectangles=" "
 
-# Take a screenshot and blur it
-#ffmpeg -y -loglevel 0 -s "$resolution" -f x11grab -i $DISPLAY -vframes 1 -vf "$filters" "$image_file"
+SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+for RES in $SR; do
+  SRA=(${RES//[x+]/ })
+  CX=$((${SRA[2]} + 25))
+  CY=$((${SRA[1]} - 80))
+  rectangles+="rectangle $CX,$CY $((CX+300)),$((CY-80)) "
+done
 
-# Grab the last wallpaper set by feh
-wallpaper=$(grep feh ~/.fehbg | sed -E "s/^feh.*'(.*)'/\1/")
-
-# Blur it
-# ffmpeg -y -loglevel 0 -s "$resolution" -i $wallpaper -vf "$filters" "$image_file"
-
-revert() {
-    xset dpms 0 0 0
-
-    # Resume notifications
-    pkill -USR2 dunst
-}
-trap revert SIGHUP SIGINT SIGTERM
-
-# Turn the screen off 5 seconds after locking
-xset +dpms dpms 5 5 5
-
-# Pause notifications
-pkill -USR1 dunst
+TMPBG=/tmp/screen.png
+scrot $TMPBG && convert $TMPBG -scale 5% -scale 2000% -draw "fill black fill-opacity 0.4 $rectangles" $TMPBG
 
 i3lock \
-    --nofork \
-    --ignore-empty-password \
-    --image=$wallpaper \
-    --tiling \
-    --color=222222 \
-    --clock \
-    --line-uses-inside \
+  -i $TMPBG \
+  --time-pos="ix-180:iy-0" \
+  --date-pos="tx+24:ty+25" \
+  --clock --date-str "Type password to unlock..." \
+  --inside-color=00000000 --ring-color=ffffffff --line-uses-inside \
+  --keyhl-color=d23c3dff --bshl-color=d23c3dff --separator-color=00000000 \
+  --insidever-color=fecf4dff --insidewrong-color=d23c3dff \
+  --ringver-color=ffffffff --ringwrong-color=ffffffff --ind-pos="x+290:h-120" \
+  --radius=20 --ring-width=3 --verif-text="" --wrong-text="" \
+  --verif-color="ffffffff" --wrong-color="ffffffff" --layout-color="ffffffff" \
+  --time-color="ffffffff" --date-color="ffffffff"
 
-revert
+rm $TMPBG
