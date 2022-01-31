@@ -3,7 +3,7 @@ configuration {
   display-window: "Windows:";
   drun-display-format: "{icon} {name}";
   font: "Operator Mono Lig Medium 12";
-  modi: "window,run,drun";
+  modi: "drun";
   show-icons: true;
   icon-theme: "Flatery";
 }
