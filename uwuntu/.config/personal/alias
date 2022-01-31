@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-alias asdf="setxkbmap real-prog-dvorak"
-alias aoeu="setxkbmap us"
+alias qsdf="setxkbmap real-prog-dvorak"
+alias aoeu="setxkbmap fr"
 alias lkj="setxkbmap real-prog-dvorak"
-alias snth="setxkbmap us"
+alias snth="setxkbmap fr"
 alias xsc="xclip -selection clipboard"
 
 #!/usr/bin/env bash
