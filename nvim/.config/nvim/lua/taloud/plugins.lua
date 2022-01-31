@@ -63,6 +63,7 @@ return packer.startup(function(use)
   -- Git
   use "tpope/vim-fugitive"
   use "ThePrimeagen/git-worktree.nvim"
+  use "lewis6991/gitsigns.nvim"
 
   -- Fuzzy Finder
   use { "junegunn/fzf", run = "./install --all" }

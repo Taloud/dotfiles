@@ -33,7 +33,7 @@ opt.incsearch = true -- Makes search act like search in modern browsers
 
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 opt.showmode = false
-opt.signcolumn = 'yes'
+opt.signcolumn = 'yes:2'
 opt.mouse = "a"
 opt.ignorecase = true -- Ignore case when searching...
 opt.smartcase = true -- ... unles there is a capital letter in the query
