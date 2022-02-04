@@ -10,6 +10,7 @@ local lspServers = {
   diagnosticls = {},
   dockerls = {},
   eslint = {},
+  graphql = {},
   html = {},
   intelephense = {},
   jsonls = {},

@@ -2,7 +2,7 @@ let g:projectionist_heuristics = {
     \ "composer.json": {
     \   "src/*.php": {
     \     "type": "source",
-    \     "alternate": "tests/{}Test.php",
+    \     "alternate": "tests/phpunit/{}Test.php",
     \   },
     \   "tests/*Test.php": {
     \     "type": "source",

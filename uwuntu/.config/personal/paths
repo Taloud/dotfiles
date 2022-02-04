@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-addToPath $HOME/.local/bin
+# addToPath $HOME/.local/bin

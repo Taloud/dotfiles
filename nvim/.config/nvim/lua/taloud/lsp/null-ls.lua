@@ -18,6 +18,5 @@ null_ls.setup({
       filetypes = {"css","scss"}
     }),
     formatting.eslint, -- Use eslint for format js files. I disabled tsserver formating
-    diagnostics.eslint, -- Use eslint for diagnostic js file
   },
 })
