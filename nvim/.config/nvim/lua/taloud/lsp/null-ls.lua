@@ -12,7 +12,7 @@ null_ls.setup({
   debug = false,
   sources = {
     -- formatting.prettier.with({ extra_args = { "--single-quote", "--jsx-single-quote" } }),
-    formatting.phpcsfixer, -- use phpCsFixer for php file format instead of Intelephense
+    formatting.intelephense, -- use phpCsFixer for php file format instead of Intelephense
     formatting.prettier.with({ -- Use prettier for css and scss formating
       extra_args = {"--single-quote"},
       filetypes = {"css","scss"}

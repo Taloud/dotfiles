@@ -69,7 +69,7 @@ local function lsp_keymaps(bufnr)
 end
 
 
-local disable_format_servers = {['tsserver'] = true, ['intelephense'] = true, ['cssls'] = true}
+local disable_format_servers = {['tsserver'] = true, ['phpcsfixer'] = true, ['cssls'] = true}
 
 M.on_attach = function(client, bufnr)
   -- Disable formatter for listed servers

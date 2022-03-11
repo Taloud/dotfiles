@@ -18,3 +18,5 @@ alias dotFileInstall="$DOTFILES/install"
 
 alias cclip="xclip -selection clipboard"
 alias pclip="xclip -selection clipboard"
+
+alias gbc="git branch | grep -v 'develop' | xargs git branch -D"

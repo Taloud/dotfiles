@@ -4,7 +4,7 @@ let g:projectionist_heuristics = {
     \     "type": "source",
     \     "alternate": "tests/phpunit/{}Test.php",
     \   },
-    \   "tests/*Test.php": {
+    \   "tests/phpunit/*Test.php": {
     \     "type": "source",
     \     "alternate": "src/{}.php",
     \   },

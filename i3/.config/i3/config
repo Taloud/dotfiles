@@ -67,6 +67,9 @@ bindsym $mod+d exec rofi -show drun -theme taloud_custom
 # start clipboard manager (a program launcher)
 bindsym $mod+Shift+v exec rofi -modi "paste:clipboard.sh" -show paste -theme taloud_custom
 
+# take screenshot
+bindsym --release $mod+Shift+s exec gnome-screenshot -a
+
 # start screenshot
 # bindsym $mod+shift+z exec gnome-screenshot -a
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -257,5 +260,7 @@ exec --no-startup-id xss-lock -- "~/.local/bin/i3lock.sh"
 
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 exec_always --no-startup-id "setxkbmap real-prog-dvorak"
+exec_always --no-startup-id "xset -dpms"
+exec_always --no-startup-id "xset s off"
 
 for_window [title="Microsoft Teams Notification"] floating enable
