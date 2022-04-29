@@ -109,6 +109,7 @@ return packer.startup(function(use)
   use "nvim-treesitter/playground"
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "lumiliet/vim-twig"
+  use "m-demare/hlargs.nvim"  -- add colorschemes for variable in functions
 
   -- Snippet manager
   use "L3MON4D3/LuaSnip" --snippet engine

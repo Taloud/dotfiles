@@ -35,5 +35,5 @@ nmap { "gT", require("telescope.builtin").lsp_type_definitions }
 nmap { "gi", require("telescope.builtin").lsp_implementations }
 nmap { "gr", require("telescope.builtin").lsp_references }
 nmap { "gl", require("telescope.builtin").diagnostics }
-nmap { "ga", require("telescope.builtin").lsp_code_actions }
+-- nmap { "ga", require("telescope.builtin").lsp_code_actions }
 
