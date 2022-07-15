@@ -12,6 +12,8 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-e>"] = cmp.mapping.close(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<c-y>"] = cmp.mapping(
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
@@ -89,8 +91,8 @@ cmp.setup {
     format = lspkind.cmp_format {
       with_text = true,
       menu = {
-        buffer = "[buf]",
         nvim_lsp = "[LSP]",
+        buffer = "[buf]",
         nvim_lua = "[api]",
         path = "[path]",
         luasnip = "[snip]",

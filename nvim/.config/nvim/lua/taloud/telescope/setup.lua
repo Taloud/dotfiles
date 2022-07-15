@@ -19,6 +19,7 @@ require("telescope").setup({
             i = {
                 ["<C-x>"] = false,
                 ["<C-q>"] = actions.send_to_qflist,
+                ["<C-Q>"] = actions.send_selected_to_qflist,
             },
         },
     },
