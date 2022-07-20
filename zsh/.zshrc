@@ -3,6 +3,13 @@ source ~/.dotfiles/zsh/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
+# Node manager
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
+export NVM_AUTO_USE=true
+antigen bundle lukechilds/zsh-nvm
+
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
 antigen bundle docker
@@ -34,3 +41,6 @@ source $HOME/.zsh_profile
 export REVIEW_BASE=dev-master
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export YVM_DIR=/home/taloud/.yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
