@@ -195,6 +195,11 @@ _G.packer_plugins = {
     path = "/home/taloud/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/taloud/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
+  },
   ["nvim-tree.lua"] = {
     config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0" },
     loaded = true,
@@ -236,6 +241,11 @@ _G.packer_plugins = {
     path = "/home/taloud/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["refactoring.nvim"] = {
+    loaded = true,
+    path = "/home/taloud/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
+    url = "https://github.com/ThePrimeagen/refactoring.nvim"
+  },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
     path = "/home/taloud/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
@@ -259,6 +269,11 @@ _G.packer_plugins = {
     path = "/home/taloud/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-lastplace"] = {
+    loaded = true,
+    path = "/home/taloud/.local/share/nvim/site/pack/packer/start/vim-lastplace",
+    url = "https://github.com/farmergreg/vim-lastplace"
+  },
   ["vim-projectionist"] = {
     loaded = true,
     path = "/home/taloud/.local/share/nvim/site/pack/packer/start/vim-projectionist",
@@ -268,6 +283,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/taloud/.local/share/nvim/site/pack/packer/start/vim-rooter",
     url = "https://github.com/airblade/vim-rooter"
+  },
+  ["vim-sleuth"] = {
+    loaded = true,
+    path = "/home/taloud/.local/share/nvim/site/pack/packer/start/vim-sleuth",
+    url = "https://github.com/tpope/vim-sleuth"
   },
   ["vim-smoothie"] = {
     loaded = true,

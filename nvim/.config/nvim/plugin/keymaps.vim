@@ -62,6 +62,10 @@ nnoremap <C-k> :cprev<CR>zz
 " Who needs this tbh ?
 nn Q <NOP>
 
+
+" Disable annoying command line thing
+nmap q: :q<CR>
+
 inoremap <C-c> <esc>
 
 "This is some quickfixtools

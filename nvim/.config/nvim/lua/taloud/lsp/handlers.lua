@@ -65,7 +65,7 @@ local function lsp_keymaps(bufnr)
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent= true})
 
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({async = true})' ]]
 end
 
 
@@ -88,6 +88,19 @@ local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
   return
 end
+
+-----------------------------------------------------------------------------//
+-- Highlight on hover
+-----------------------------------------------------------------------------//
+local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = vim.lsp.buf.document_highlight,
+  group = group,
+})
+vim.api.nvim_create_autocmd("CursorMoved", {
+  callback = vim.lsp.buf.clear_references,
+  group = group,
+})
 
 -----------------------------------------------------------------------------//
 -- Signs

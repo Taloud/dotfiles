@@ -40,3 +40,6 @@ require "taloud.lsp"
 -- Telescope BTW
 require "taloud.telescope.setup"
 require "taloud.telescope.mappings"
+
+--  Load git-worktree.
+require "taloud.git-worktree"

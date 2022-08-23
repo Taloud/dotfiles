@@ -51,6 +51,9 @@ return packer.startup(function(use)
   use "sainnhe/gruvbox-material"
   use "gruvbox-community/gruvbox"
 
+  -- Pretty notification
+  use "rcarriga/nvim-notify"
+
   -- Status bar
   use {
     "nvim-lualine/lualine.nvim",
@@ -93,6 +96,9 @@ return packer.startup(function(use)
         require('Comment').setup()
     end
   }
+  use 'farmergreg/vim-lastplace' -- save last position in file when quit
+  use 'tpope/vim-sleuth' -- Indent autodetection with editorconfig support
+
 
   -- SmoothScroll
   use 'psliwka/vim-smoothie'
@@ -115,7 +121,6 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip" --snippet engine
 
   -- Completion
-  -- Sources
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"
@@ -131,11 +136,12 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
+  -- Refoctoring
+  use "ThePrimeagen/refactoring.nvim"
+
   -- Building Tools / Test Tools
   use { "tpope/vim-dispatch", cmd = { "Dispatch", "Make" } }
   use "vim-test/vim-test"
-
-
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -7,6 +7,8 @@ M.search_dotfiles = function()
     })
 end
 
+local actions = require "telescope.actions"
+
 M.git_branches = function()
     require("telescope.builtin").git_branches({
         attach_mappings = function(_, map)

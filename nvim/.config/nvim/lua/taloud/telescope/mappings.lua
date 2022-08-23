@@ -1,4 +1,5 @@
 local nmap = require("taloud.keymap").nmap
+local vmap = require("taloud.keymap").vmap
 
 -- Daily Remap
 nmap {
@@ -33,8 +34,15 @@ nmap { "<leader>vh", require("telescope.builtin").help_tags }
 nmap { "gd", require("telescope.builtin").lsp_definitions }
 nmap { "gT", require("telescope.builtin").lsp_type_definitions }
 nmap { "gi", require("telescope.builtin").lsp_implementations }
-nmap { "gr", require("telescope.builtin").lsp_references }
+nmap {
+  "gr",
+  function()
+    require("telescope.builtin").lsp_references({show_line = false})
+  end,
+}
 nmap { "gl", require("telescope.builtin").diagnostics }
 nmap { "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>" }
 -- nmap { "ga", require("telescope.builtin").lsp_code_actions }
 
+-- Refactoring remap
+vmap { "<leader>rr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>"}
