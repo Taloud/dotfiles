@@ -1,12 +1,11 @@
 configuration {
     font: "Operator Mono Lig Medium 12";
-    show-icons:                     true;
+    show-icons:                     false;
     display-drun: "";
     display-window: "";
     drun-display-format:            "{name}";
     disable-history:                false;
     sidebar-mode: false;
-    icon-theme: "Flatery";
     kb-secondary-copy: "control+0";
     kb-cancel: "control+c,Escape";
 }
@@ -92,7 +91,7 @@ element-icon {
     text-color:       inherit;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
-    size:                           28px;
+    size:                           0;
     border:                         0px;
     padding:                        0 10px 0 10px;
 }

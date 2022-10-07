@@ -12,10 +12,9 @@ local function is_figaro(path)
 end
 
 Worktree.on_tree_change(function(op, metadata)
-  print(metadata)
   if is_figaro(metadata.path) then
     if op == Worktree.Operations.Switch then
-        os.execute("inotifywait.sh " .. metadata.path .. "/ > /dev/null 2>&1 &" )
+        -- os.execute("inotifywait.sh " .. metadata.path .. "/ > /dev/null 2>&1 &" )
         vim.notify("sucessfully switch to " .. metadata.path, "info")
     end
     if op == Worktree.Operations.Create then

@@ -38,8 +38,7 @@ opt.mouse = "a"
 opt.ignorecase = true -- Ignore case when searching...
 opt.smartcase = true -- ... unles there is a capital letter in the query
 opt.list = true
-opt.listchars = 'tab:▸ ,trail:·'
-
+opt.listchars = 'tab:▸ ,eol:↴,trail:·'
 
 -- set joinspaces
 opt.joinspaces = false -- Two spaces and grade school, we're done

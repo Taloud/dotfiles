@@ -4,23 +4,7 @@ if not ok then
 end
 
 treesitter.setup {
-  ensure_installed = {
-    "comment",
-    "css",
-    "dockerfile",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "markdown",
-    "php",
-    "query",
-    "scss",
-    "tsx",
-    "typescript",
-    "vim",
-    "yaml",
-  },
+  ensure_installed = "all",
 
   autopairs = {
     enable = false,
@@ -38,10 +22,14 @@ treesitter.setup {
     highlight_current_scope = { enable = false },
   },
 
-  indent = { enable = true, disable = { "" } },
+  indent = {
+    enable = false,
+    disable = { "" }
+  },
 
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
   },
 }
+

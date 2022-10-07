@@ -111,26 +111,8 @@ fun! EmptyRegisters()
     endfor
 endfun
 
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-
 " ES
 com! W w
-
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
-augroup END
-
-augroup THE_PRIMEAGEN
-    autocmd!
-    autocmd BufWritePre * :call TrimWhitespace()
-    " autocmd VimEnter * :VimApm
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-augroup END
 
 " TODO: MOVE THIS IN ANOTHER FILE
 augroup PhpactorMappings
@@ -138,3 +120,12 @@ augroup PhpactorMappings
     au FileType php nmap <buffer> <Leader>mm :PhpactorContextMenu<CR>
 augroup END
 
+augroup reloadKitty
+    autocmd!
+    autocmd bufwritepost ~/.config/kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty) ; tmux display-message "Reloaded ~/.config/kitty/.kitty.conf\!"
+augroup END
+
+augroup reloadTmux
+    autocmd!
+    autocmd bufwritepost ~/.tmux.conf :silent !tmux source-file ~/.tmux.conf ; tmux display-message "Reloaded ~/.tmux.conf\!"
+augroup END

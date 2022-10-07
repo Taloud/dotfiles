@@ -18,5 +18,6 @@ null_ls.setup({
       filetypes = {"css","scss"}
     }),
     formatting.eslint, -- Use eslint for format js files. I disabled tsserver formating
+    diagnostics.phpstan, -- use phpCsFixer for php file format instead of Intelephense
   },
 })

@@ -15,12 +15,11 @@ set $mod Mod1
 # is used in the bar {} block below.
 font pango:monospace 8
 
-# GET DEM BORDERS OUT OF HEREc:w
-#
-# Thanks Childz
-for_window [class="^.*"] border pixel 2
-                          # class                 border  backgr. text    indicator child_border
-for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+# GET DEM BORDERS OUT OF HERE
+for_window [class="^.*"] border pixel 0
+
+# Teams they said kekw
+for_window [title="Microsoft Teams Notification"] floating enable
 
 # Don't move the mouse cursor with the active output
 mouse_warping none
@@ -31,51 +30,31 @@ focus_follows_mouse no
 # Toggle between new and previous workspace
 workspace_auto_back_and_forth yes
 
-smart_gaps on
-smart_borders on
 # Space between each window and edge of screen
-gaps inner 20
+gaps inner 12
 # Extra space around edge of screen
-gaps outer 20
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+gaps outer 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# kill focused window
-# bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
-
+# kill current window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -show drun -theme taloud_custom
 
 # start clipboard manager (a program launcher)
-bindsym $mod+Shift+v exec rofi -modi "paste:clipboard.sh" -show paste -theme taloud_custom
+bindsym $mod+Shift+v exec rofi -modi "paste:clipboard.sh" -show paste -theme taloud_custom_no_icon
 
 # take screenshot
 bindsym --release $mod+Shift+s exec gnome-screenshot -a
 
-# start screenshot
-# bindsym $mod+shift+z exec gnome-screenshot -a
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# switch headset profile
+bindsym --release $mod+m exec switchA2DP.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -111,15 +90,15 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -135,16 +114,17 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 
-workspace $ws1 output eDP-1
-workspace $ws2 output DP-4 eDP-1
-workspace $ws3 output DP-3-1 eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output eDP-1
-workspace $ws6 output eDP-1
-workspace $ws7 output eDP-1
-workspace $ws8 output eDP-1
-workspace $ws9 output eDP-1
-workspace $ws0 output eDP-1
+# for multiple output purpose (for now only using 1 screen)
+# workspace $ws1 output eDP-1
+# workspace $ws2 output DP-4 eDP-1
+# workspace $ws3 output DP-3-1 eDP-1
+# workspace $ws4 output eDP-1
+# workspace $ws5 output eDP-1
+# workspace $ws6 output eDP-1
+# workspace $ws7 output eDP-1
+# workspace $ws8 output eDP-1
+# workspace $ws9 output eDP-1
+# workspace $ws0 output eDP-1
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -169,31 +149,6 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-
-# switch to workspace
-#_ bindsym $mod+Shift+equal workspace 1
-#_ bindsym $mod+racketleft workspace 2
-#_ bindsym $mod+Shift+bracketleft workspace 3
-#_ bindsym $mod+Shift+9 workspace 4
-#_ bindsym $mod+Shift+7 workspace 5
-#_ bindsym $mod+equal workspace 6
-#_ bindsym $mod+Shift+0 workspace 7
-#_ bindsym $mod+Shift+bracketright workspace 8
-#_ bindsym $mod+bracketright workspace 9
-#_ bindsym $mod+Shift+8 workspace 10
-#_
-#_ # move focused container to workspace
-#_ bindsym $mod+1 move container to workspace 1
-#_ bindsym $mod+2 move container to workspace 2
-#_ bindsym $mod+3 move container to workspace 3
-#_ bindsym $mod+4 move container to workspace 4
-#_ bindsym $mod+5 move container to workspace 5
-#_ bindsym $mod+6 move container to workspace 6
-#_ bindsym $mod+7 move container to workspace 7
-#_ bindsym $mod+8 move container to workspace 8
-#_ bindsym $mod+9 move container to workspace 9
-#_ bindsym $mod+0 move container to workspace 10
-
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -252,15 +207,25 @@ bindsym $mod+Shift+period exec systemctl suspend
 # Lock screen
 bindsym $mod+x exec --no-startup-id "~/.local/bin/i3lock.sh"
 
+# run picom
 exec_always --no-startup-id picom --experimental-backends &
+
+# run clipboard manager
 exec_always --no-startup-id greenclip daemon &
+
+# run dunst
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc &
+
+# run wallpaper
 exec_always --no-startup-id sh ~/.local/bin/fehbg
+
+# run lockscreen
 exec --no-startup-id xss-lock -- "~/.local/bin/i3lock.sh"
 
+# run polybar
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
+
+# Dvorak for the win
 exec_always --no-startup-id "setxkbmap real-prog-dvorak"
 exec_always --no-startup-id "xset -dpms"
 exec_always --no-startup-id "xset s off"
-
-for_window [title="Microsoft Teams Notification"] floating enable

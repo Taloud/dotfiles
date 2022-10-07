@@ -116,6 +116,8 @@ return packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "lumiliet/vim-twig"
   use "m-demare/hlargs.nvim"  -- add colorschemes for variable in functions
+  use 'nvim-treesitter/nvim-treesitter-context'
+  use "lukas-reineke/indent-blankline.nvim" -- Blank space indicator
 
   -- Snippet manager
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -133,8 +135,18 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "onsails/lspkind-nvim"
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use 'tjdevries/nlua.nvim' -- for LUA lsp
+  use 'antoinemadec/FixCursorHold.nvim' -- fix cursor hold
+  use 'nanotee/sqls.nvim' -- SQL lsp
+  use {
+      "prettier/vim-prettier",
+      ft = { "html", "javascript", "typescript", "typescriptreact" },
+      run = "yarn install",
+    }
 
   -- Refoctoring
   use "ThePrimeagen/refactoring.nvim"
@@ -142,6 +154,16 @@ return packer.startup(function(use)
   -- Building Tools / Test Tools
   use { "tpope/vim-dispatch", cmd = { "Dispatch", "Make" } }
   use "vim-test/vim-test"
+
+  -- Database management
+  use "tpope/vim-dadbod"
+  use "kristijanhusak/vim-dadbod-ui"
+
+  -- TODO: Debug adapter protocol
+    -- use "mfussenegger/nvim-dap"
+    -- use "rcarriga/nvim-dap-ui"
+    -- use "theHamsta/nvim-dap-virtual-text"
+    -- use "nvim-telescope/telescope-dap.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
