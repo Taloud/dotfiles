@@ -4,7 +4,21 @@ if not ok then
 end
 
 treesitter.setup {
-  ensure_installed = "all",
+  ensure_installed = {
+      "go",
+      "help",
+      "html",
+      "javascript",
+      "json",
+      "markdown",
+      "python",
+      "query",
+      "rust",
+      "tsx",
+      "php",
+      "typescript",
+      "vim",
+    },
 
   autopairs = {
     enable = false,
