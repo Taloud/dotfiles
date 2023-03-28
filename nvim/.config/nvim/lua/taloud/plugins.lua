@@ -46,6 +46,15 @@ return packer.startup(function(use)
   -- NeoVim ToolBox
   use "nvim-lua/plenary.nvim"
   use 'nvim-lua/popup.nvim'
+  use({
+  'airblade/vim-rooter',
+  setup = function()
+    vim.g.rooter_manual_only = 1
+  end,
+  config = function()
+    vim.cmd('Rooter')
+  end,
+})
 
   -- Colorschemes
   use "sainnhe/gruvbox-material"

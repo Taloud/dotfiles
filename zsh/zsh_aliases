@@ -1,4 +1,12 @@
-# Open current directory in finder
+#--------------------------------------------------------------------------
+# Aliases
+#--------------------------------------------------------------------------
+
+alias vim="nvim"
+alias copy="xclip -selection clipboard"
+alias paste="xclip -o -selection clipboard"
+alias cat="bat"
+
 alias finder="open ."
 
 alias pr="pull-request.sh"
@@ -8,4 +16,3 @@ c() {
     cd $1;
     ls;
 }
-alias cd="c"

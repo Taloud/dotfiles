@@ -207,6 +207,9 @@ bindsym $mod+Shift+period exec systemctl suspend
 # Lock screen
 bindsym $mod+x exec --no-startup-id "~/.local/bin/i3lock.sh"
 
+# change screen
+bindsym $mod+s exec --no-startup-id exec autorandr home
+
 # run picom
 exec_always --no-startup-id picom --experimental-backends &
 

@@ -1,20 +1,45 @@
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+local has_words_before = function()
+  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+end
+local luasnip = require('luasnip')
+local cmp = require('cmp')
+local lspkind = require('lspkind')
 
--- Don't show the dumb matching stuff.
-vim.opt.shortmess:append "c"
+-- Set completeopt to have a better completion experience
+-- vim.opt.completeopt = { "menu", "menuone", "noselect" } OLD ONE
+vim.o.completeopt = 'menuone,longest,preview'
 
-local lspkind = require "lspkind"
-
-local cmp = require "cmp"
-
-cmp.setup {
+cmp.setup({
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  },
+  formatting = {
+    format = lspkind.cmp_format({
+      with_text = true,
+      menu = {
+        nvim_lsp = '[LSP]',
+        nvim_lua = '[Lua]',
+        buffer = '[BUF]',
+        path = "[path]",
+        luasnip = "[snip]",
+      },
+    }),
+  },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   mapping = {
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<c-y>"] = cmp.mapping(
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+        ["<c-y>"] = cmp.mapping(
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
@@ -36,75 +61,18 @@ cmp.setup {
         end
       end,
     },
-
     ["<tab>"] = cmp.config.disable,
   },
-
-  --    the order of your sources matter (by defaul). That gives them priority
-  --    you can configure:
-  --        keyword_length
-  --        priority
-  --        max_item_count
-  --        (more?)
   sources = {
-    { name = "nvim_lua" },
-    { name = "nvim_lsp" },
-    { name = "path" },
-    { name = "luasnip" },
-    { name = "buffer", keyword_length = 5 },
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'nvim_lua' },
+    { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'buffer' },
+    -- { name = 'fuzzy_path' },
   },
-
-  sorting = {
-    comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
-
-      -- copied from cmp-under, but I don't think I need the plugin for this.
-      -- I might add some more of my own.
-      function(entry1, entry2)
-        local _, entry1_under = entry1.completion_item.label:find "^_+"
-        local _, entry2_under = entry2.completion_item.label:find "^_+"
-        entry1_under = entry1_under or 0
-        entry2_under = entry2_under or 0
-        if entry1_under > entry2_under then
-          return false
-        elseif entry1_under < entry2_under then
-          return true
-        end
-      end,
-
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-    },
-  },
-
-  snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body)
-    end,
-  },
-
-  formatting = {
-    format = lspkind.cmp_format {
-      with_text = true,
-      menu = {
-        nvim_lsp = "[LSP]",
-        buffer = "[buf]",
-        nvim_lua = "[api]",
-        path = "[path]",
-        luasnip = "[snip]",
-      },
-    },
-  },
-
-  experimental = {
-    native_menu = false,
-    ghost_text = false,
-  },
-}
+})
 
 _ = vim.cmd [[
   augroup CmpZsh

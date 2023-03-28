@@ -11,7 +11,6 @@ if not config_status_ok then
 end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
-
 nvim_tree.setup {
   actions = {
     open_file = {
@@ -57,6 +56,8 @@ nvim_tree.setup {
     timeout = 500,
   },
   renderer = {
+    group_empty = true,
+    highlight_opened_files = '1',
     icons = {
       glyphs = {
         default = "",
@@ -102,3 +103,9 @@ nvim_tree.setup {
 }
 
 nmap { "<leader>pv", ":NvimTreeToggle<CR>" }
+vim.cmd([[
+  highlight NvimTreeIndentMarker guifg=#30323E
+  augroup NvimTreeHighlights
+    autocmd ColorScheme * highlight NvimTreeIndentMarker guifg=#30323E
+  augroup end
+]])

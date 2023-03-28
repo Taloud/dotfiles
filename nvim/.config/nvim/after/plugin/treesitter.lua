@@ -13,7 +13,7 @@ treesitter.setup {
   highlight = {
     enable = true, -- false will disable the whole extension
     use_languagetree = false,
-    disable = { "" }, -- list of language that will be disabled
+    disable = { 'NvimTree' },
     additional_vim_regex_highlighting = true,
   },
 

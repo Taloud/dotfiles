@@ -18,6 +18,13 @@ antigen bundle docker
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
+# antigen bundle jeffreytse/zsh-vi-mode
+
+HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="yyyy-mm-dd"
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
 # Load the theme.
 antigen theme robbyrussell
@@ -27,6 +34,9 @@ antigen apply
 
 # Activate direnv
 eval "$(direnv hook zsh)"
+
+# Decrease delay that vi-mode waits for the end of a key sequence
+export KEYTIMEOUT=15
 
 # remove user in front of path
 DEFAULT_USER=$USER
@@ -44,3 +54,20 @@ export REVIEW_BASE=dev-master
 
 export YVM_DIR=/home/taloud/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+#--------------------------------------------------------------------------
+# Miscellaneous
+#--------------------------------------------------------------------------
+
+### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+### Fix slowness of pastes
