@@ -75,10 +75,11 @@ return {
   "nvim-telescope/telescope.nvim",
   "nvim-telescope/telescope-fzy-native.nvim",
 
+
    -- Treeshitter
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    -- build = ":TSUpdate",
   },
   "nvim-treesitter/playground",
   "JoosepAlviste/nvim-ts-context-commentstring",
@@ -99,6 +100,7 @@ return {
   "hrsh7th/cmp-nvim-lsp-document-symbol",
   "saadparwaiz1/cmp_luasnip",
   "tamago324/cmp-zsh",
+  "b0o/schemastore.nvim",
 
   -- LSP
   "neovim/nvim-lspconfig",  -- enable LSP

@@ -15,3 +15,7 @@ Prepare a `licence.txt` file containing the licence key and place it in a design
 $ node -e "console.log(os.homedir() + '/intelephense/licence.txt')"
 /Users/username/intelephense/licence.txt
 ```
+
+## Troubleshooting
+
+If you got `i3lock: unrecognized option '--time-pos'`, go to your i3lock-color folder and `./install-i3lock-color.sh` again.

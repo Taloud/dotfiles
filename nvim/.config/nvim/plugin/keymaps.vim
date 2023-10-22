@@ -102,8 +102,6 @@ endfun
 "--------------------------------------------------------------------------
 " Miscellaneous
 "--------------------------------------------------------------------------
-command Ggfl :Gpush --force-with-lease
-
 fun! EmptyRegisters()
     let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
     for r in regs
@@ -114,18 +112,7 @@ endfun
 " ES
 com! W w
 
-" TODO: MOVE THIS IN ANOTHER FILE
 augroup PhpactorMappings
     au!
     au FileType php nmap <buffer> <Leader>mm :PhpactorContextMenu<CR>
-augroup END
-
-augroup reloadKitty
-    autocmd!
-    autocmd bufwritepost ~/.config/kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty) ; tmux display-message "Reloaded ~/.config/kitty/.kitty.conf\!"
-augroup END
-
-augroup reloadTmux
-    autocmd!
-    autocmd bufwritepost ~/.tmux.conf :silent !tmux source-file ~/.tmux.conf ; tmux display-message "Reloaded ~/.tmux.conf\!"
 augroup END

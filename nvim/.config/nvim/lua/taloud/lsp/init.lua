@@ -26,7 +26,7 @@ local autocmd_format = function(async, filter)
   vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = 0,
     callback = function()
-      vim.lsp.buf.format { async = async, filter = filter }
+      -- vim.lsp.buf.format { async = async, filter = filter }
     end,
   })
 end
@@ -120,7 +120,7 @@ local servers = {
   intelephense = true,
   dockerls = true,
   graphql = true,
-  sqls = true,
+  sqlls = true,
   jsonls = true,
   cmake = (1 == vim.fn.executable "cmake-language-server"),
   dartls = pcall(require, "flutter-tools"),
@@ -195,6 +195,9 @@ if use_null then
       }),
       -- require("null-ls").builtins.formatting.phpcsfixer, -- use phpCsFixer for php file format instead of Intelephense
       require("null-ls").builtins.formatting.eslint,
+      require("null-ls").builtins.formatting.phpcsfixer, -- use phpCsFixer for php file format instead of Intelephense
+      require("null-ls").builtins.formatting.eslint, -- Use eslint for format js files. I disabled tsserver formating
+      require("null-ls").builtins.diagnostics.phpstan, -- use phpCsFixer for php file format instead of Intelephense
     },
   }
 end

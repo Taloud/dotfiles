@@ -1,5 +1,7 @@
 export XDG_CONFIG_HOME=$HOME/.config
- 
+export ANDROID_HOME=/home/taloud/Android/Sdk
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+
 PERSONAL=$XDG_CONFIG_HOME/personal
 for i in `find -L $PERSONAL`; do
     source $i

@@ -6,7 +6,6 @@ end
 treesitter.setup {
   ensure_installed = {
       "go",
-      "help",
       "html",
       "javascript",
       "json",

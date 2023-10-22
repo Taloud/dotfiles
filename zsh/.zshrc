@@ -56,8 +56,29 @@ export YVM_DIR=/home/taloud/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 #--------------------------------------------------------------------------
+# Aliases
+#--------------------------------------------------------------------------
+
+alias cat="bat"
+alias finder="nautilus ."
+alias testing='git tag -d testing && git push origin :refs/tags/testing && git tag testing'
+
+#--------------------------------------------------------------------------
 # Miscellaneous
 #--------------------------------------------------------------------------
+
+### Use multiple nvim conf on load
+function nvims() {
+  items=("default" "playground" "renew")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height 10% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
 
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
 pasteinit() {
@@ -71,3 +92,11 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
+alias luamake=/home/taloud/git/lua-language-server/3rd/luamake/luamake
+
+# bun completions
+[ -s "/home/taloud/.bun/_bun" ] && source "/home/taloud/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -6,6 +6,9 @@ let test#php#runner = 'phpunit'
 let test#php#phpunit#executable = 'XDEBUG_MODE=coverage php -d memory_limit=-1 bin/phpunit'
 ]])
 
+vim.cmd([[
+let test#javascript#runner = 'playwright'
+]])
 -- vim.cmd([[
 -- " let test#php#runner = 'phpunit'
 -- let test#strategy = "dispatch"
