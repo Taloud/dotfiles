@@ -50,7 +50,7 @@ export DOTFILES=$HOME/.dotfiles
 source $HOME/.zsh_profile
 export REVIEW_BASE=dev-master
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export YVM_DIR=/home/taloud/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh

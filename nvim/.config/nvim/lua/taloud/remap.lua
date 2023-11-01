@@ -85,6 +85,9 @@ vim.keymap.set("n", "<leader>gu", ":diffget //2<CR>")
 
 vim.cmd([[com! W w]])
 
+-- Format with lsp
+vim.keymap.set("n", "<leader>by", ":Format<CR>")
+
 -- Source current file
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")

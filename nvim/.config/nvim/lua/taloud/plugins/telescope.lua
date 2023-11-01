@@ -31,7 +31,7 @@ return {
     { 'gd', function() require('telescope.builtin').lsp_definitions() end },
     { 'gT', function() require('telescope.builtin').lsp_type_definitions() end },
     { 'gi', function() require('telescope.builtin').lsp_implementations() end },
-    { 'gr', function() require('telescope.builtin').lsp_references({ show_line = true }) end },
+    { 'gr', function() require('telescope.builtin').lsp_references({ show_line = false }) end },
     { 'gl', function() require('telescope.builtin').diagnostics({ bufnr=0 }) end },
   },
   config = function ()

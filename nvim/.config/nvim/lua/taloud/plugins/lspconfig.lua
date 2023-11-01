@@ -65,8 +65,36 @@ return {
       }
     })
 
-    -- Tailwind CSS
-    require('lspconfig').tsserver.setup({ capabilities = capabilities })
+    -- HTML / CSS
+    require'lspconfig'.cssls.setup {
+      capabilities = capabilities,
+    }
+
+    require'lspconfig'.cssmodules_ls.setup {}
+
+    require'lspconfig'.html.setup {
+      capabilities = capabilities,
+      on_attach =
+          function(client)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end
+    }
+
+    -- Javascript
+    require('lspconfig').tsserver.setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+      end,
+    })
+
+    require('lspconfig').eslint.setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = true
+      end,
+    })
 
     -- JSON
     require('lspconfig').jsonls.setup({
@@ -84,24 +112,19 @@ return {
     null_ls.setup({
       temp_dir = '/tmp',
       sources = {
-        null_ls.builtins.diagnostics.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js' })
-          end,
-        }),
         -- null_ls.builtins.diagnostics.phpstan, -- TODO: Only if config file
         null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
-        null_ls.builtins.formatting.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js', '.eslintrc.json' })
-          end,
-        }),
+        -- null_ls.builtins.formatting.eslint_d.with({
+        --   condition = function(utils)
+        --     return utils.root_has_file({ '.eslintrc.js', '.eslintrc.json' })
+        --   end,
+        -- }),tsserver
         null_ls.builtins.formatting.pint.with({
           condition = function(utils)
             return utils.root_has_file({ 'vendor/bin/pint' })
           end,
         }),
-        null_ls.builtins.formatting.prettier.with({
+        null_ls.builtins.formatting.prettierd.with({
           condition = function(utils)
             return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js', 'prettier.config.js' })
           end,
