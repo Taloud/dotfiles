@@ -5,7 +5,7 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'b0o/schemastore.nvim',
-    { 'jose-elias-alvarez/null-ls.nvim', dependencies = 'nvim-lua/plenary.nvim' },
+    { 'nvimtools/none-ls.nvim', dependencies = 'nvim-lua/plenary.nvim' },
     'jayp0521/mason-null-ls.nvim',
   },
   config = function()
@@ -125,12 +125,15 @@ return {
           end,
         }),
         null_ls.builtins.formatting.prettierd.with({
-          condition = function(utils)
+          --[[ condition = function(utils)
             return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js', 'prettier.config.js' })
-          end,
+          end, ]]
+        }),
+        null_ls.builtins.formatting.djlint.with({
+          filetypes = { "twig", "html", "smarty" },
         }),
       },
-      on_attach = function(client, bufnr)
+      --[[ on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
@@ -141,7 +144,7 @@ return {
             end,
           })
         end
-      end,
+      end, ]]
     })
 
     require('mason-null-ls').setup({ automatic_installation = true })

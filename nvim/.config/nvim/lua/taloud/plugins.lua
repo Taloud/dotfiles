@@ -18,7 +18,10 @@ require("lazy").setup({
 
   -- add change and delete text
   { "tpope/vim-surround" },
-  --
+
+  -- I"m a fisherman !!!
+  { import = "taloud.plugins.harpoon" },
+
   -- Indent autodetection with editorconfig support
   { "tpope/vim-sleuth" },
 
@@ -46,9 +49,9 @@ require("lazy").setup({
 
   -- Telescope BTW !!!!!
   { import = "taloud.plugins.telescope" },
-  --
+
   -- Guilty I like tree view :/
-  { import = "taloud.plugins.neo-tree" },
+  -- { import = "taloud.plugins.neo-tree" },
 
   -- Status line
   { import = "taloud.plugins.lualine" },
@@ -86,11 +89,8 @@ require("lazy").setup({
   -- Hightlight occurences of the word under the cursor
   { import = "taloud.plugins.illuminate" },
 
-  -- I"m a fisherman !!!
-  { import = "taloud.plugins.harpoon" },
-
   -- SmoothScroll
-  { "karb94/neoscroll.nvim", config = true },
+  { import = "taloud.plugins.neoscroll" },
 
 }, {
   checker = {

@@ -3,6 +3,13 @@ vim.g.maplocalleader = ' '
 
 -- Sexplorer
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- open file_browser with the path of the current buffer
+vim.keymap.set(
+  "n",
+  "<leader>pv",
+  ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+  { noremap = true }
+)
 
 -- Vim movement for windows
 vim.keymap.set('n', '<leader>h', ':wincmd h<CR>')
