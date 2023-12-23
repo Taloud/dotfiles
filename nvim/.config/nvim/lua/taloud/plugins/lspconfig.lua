@@ -15,7 +15,21 @@ return {
         height = 0.8,
       },
     })
-    require('mason-lspconfig').setup({ automatic_installation = true })
+    require('mason-lspconfig').setup({
+      ensure_installed = {
+        "cssls",
+        "cssmodules_ls",
+        "eslint",
+        "html",
+        "intelephense",
+        "jsonls",
+        "phpactor",
+        "tailwindcss",
+        "tsserver",
+        "volar"
+      },
+      automatic_installation = true
+    })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -147,7 +161,15 @@ return {
       end, ]]
     })
 
-    require('mason-null-ls').setup({ automatic_installation = true })
+    require('mason-null-ls').setup({
+      ensure_installed = {
+        "prettier",
+        "prettierd",
+        "djlint",
+        "pint",
+        "eslint_d",
+      },
+      automatic_installation = true })
 
     -- Keymaps
     vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')

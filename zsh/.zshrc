@@ -43,7 +43,7 @@ DEFAULT_USER=$USER
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
 # Load aliases
 source ~/.dotfiles/zsh/zsh_aliases
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$HOME/.local/bin:$PATH"
 export BAT_THEME="gruvbox-dark"
 export ZSH=$HOME/.oh-my-zsh
 export DOTFILES=$HOME/.dotfiles
