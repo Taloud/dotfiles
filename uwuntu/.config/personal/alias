@@ -3,7 +3,7 @@ alias qsdf="setxkbmap real-prog-dvorak"
 alias aoeu="setxkbmap fr"
 alias lkj="setxkbmap real-prog-dvorak"
 alias snth="setxkbmap fr"
-alias xsc="xclip -selection clipboard"
+#alias xsc="xclip -selection clipboard"
 
 #!/usr/bin/env bash
 alias vim="$VIM"
@@ -13,10 +13,10 @@ alias ebc="$VIM $DOTFILES/zsh/.zshrc"
 alias ebp="$VIM $DOTFILES/zsh/.zsh_profile"
 alias etc="$VIM $DOTFILES/tmux/.tmux.conf"
 alias enrc="nvim $DOTFILES/nvim/.config/nvim/init.vim"
-alias bp="dotFileInstall && source ~/.zshrc"
-alias dotFileInstall="$DOTFILES/install"
+#alias bp="dotFileInstall && source ~/.zshrc"
+#alias dotFileInstall="$DOTFILES/install"
 
-alias cclip="xclip -selection clipboard"
-alias pclip="xclip -selection clipboard"
+#alias cclip="xclip -selection clipboard"
+#alias pclip="xclip -selection clipboard"
 
 alias gbc="git branch | grep -v 'develop' | xargs git branch -D"
