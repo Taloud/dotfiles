@@ -1,9 +1,23 @@
 local data = assert(vim.fn.stdpath "data") --[[@as string]]
 
 require("telescope").setup {
+  pickers = {
+    find_files = {
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+    },
+    live_grep = {
+      additional_args = function()
+        return { "--hidden", "--glob", "!**/.git/*" }
+      end,
+    },
+    grep_string = {
+      additional_args = function()
+        return { "--hidden", "--glob", "!**/.git/*" }
+      end,
+    },
+  },
   extensions = {
     wrap_results = true,
-
     fzf = {},
     history = {
       path = vim.fs.joinpath(data, "telescope_history.sqlite3"),
@@ -21,6 +35,7 @@ pcall(require("telescope").load_extension, "ui-select")
 
 local builtin = require "telescope.builtin"
 
+-- vim.keymap.set("n", "<C-p>", builtin.find_files { find_command = { "rg", "--files", "--hidden", "-g", "!.git" } })
 vim.keymap.set("n", "<C-p>", builtin.find_files)
 -- vim.keymap.set("n", "<space>ft", builtin.git_files)
 -- vim.keymap.set("n", "<space>fh", builtin.help_tags)

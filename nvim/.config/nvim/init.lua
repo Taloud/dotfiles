@@ -1,6 +1,6 @@
 --[[
 -- Setup initial configuration,
--- 
+--
 -- Primarily just download and execute lazy.nvim
 --]]
 vim.g.mapleader = " "
