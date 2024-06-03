@@ -1,110 +1,129 @@
-source ~/.dotfiles/zsh/antigen.zsh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Node manager
-export NVM_COMPLETION=true
-export NVM_LAZY_LOAD=true
-export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
-export NVM_AUTO_USE=true
-antigen bundle lukechilds/zsh-nvm
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle docker
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
 
-# Useful bundles.
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-# antigen bundle jeffreytse/zsh-vi-mode
+# Add in Powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Add in snippets
+zi snippet OMZL::git.zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::nvm
+zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -Uz compinit && compinit
+
+zinit cdreplay -q
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# Aliases
+alias ls='ls --color'
+alias c='clear'
+
+eval "$(fzf --zsh)"
+
+#--------------------------------------------------------------------------
+# Configurations
+#--------------------------------------------------------------------------
+
+# Activate direnv
+eval "$(direnv hook zsh)"
 
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+#VIM="nvim"
 
-# Load the theme.
-antigen theme robbyrussell
+# remove user in front of path
+DEFAULT_USER=$USER
 
-# Tell Antigen that you're done.
-antigen apply
-
-# Activate direnv
-eval "$(direnv hook zsh)"
+#--------------------------------------------------------------------------
+# Exports
+#--------------------------------------------------------------------------
 
 # Decrease delay that vi-mode waits for the end of a key sequence
 export KEYTIMEOUT=15
 
-# remove user in front of path
-DEFAULT_USER=$USER
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
-# Load aliases
-source ~/.dotfiles/zsh/zsh_aliases
-export PATH="/home/linuxbrew/.linuxbrew/bin/brew:/usr/local/sbin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.config/bin:$PATH"
 export BAT_THEME="gruvbox-dark"
-export ZSH=$HOME/.oh-my-zsh
 export DOTFILES=$HOME/.dotfiles
-source $HOME/.zsh_profile
-export REVIEW_BASE=dev-master
+export XDG_CONFIG_HOME=$HOME/.config
+export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name '\''*.tags'\'' -printf '\''%P\n'\'
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export YVM_DIR=/home/taloud/.yvm
-[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 #--------------------------------------------------------------------------
 # Aliases
 #--------------------------------------------------------------------------
 
-alias cat="bat"
 alias finder="nautilus ."
 alias testing='git tag -d testing && git push origin :refs/tags/testing && git tag testing'
+alias qsdf="setxkbmap real-prog-dvorak"
+alias aoeu="setxkbmap fr"
+alias lkj="setxkbmap real-prog-dvorak"
+alias snth="setxkbmap fr"
+alias gbc="git branch | grep -v 'develop' | xargs git branch -D"
+#alias pr="pull-request.sh"
 
 #--------------------------------------------------------------------------
 # Miscellaneous
 #--------------------------------------------------------------------------
 
-### Use multiple nvim conf on load
-function nvims() {
-  items=("default" "playground" "renew")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height 10% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  elif [[ $config == "default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
-}
+setopt globdots
+bindkey -s ^f "tmux-sessionizer\n"
 
-### Fix slowness of pastes with zsh-syntax-highlighting.zsh
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-
-pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-### Fix slowness of pastes
-alias luamake=/home/taloud/git/lua-language-server/3rd/luamake/luamake
-
-# bun completions
-[ -s "/home/taloud/.bun/_bun" ] && source "/home/taloud/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# pnpm
-export PNPM_HOME="/home/taloud/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
