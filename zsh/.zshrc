@@ -84,7 +84,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-#VIM="nvim"
+VIM="nvim"
 
 # remove user in front of path
 DEFAULT_USER=$USER
@@ -102,6 +102,9 @@ export BAT_THEME="gruvbox-dark"
 export DOTFILES=$HOME/.dotfiles
 export XDG_CONFIG_HOME=$HOME/.config
 export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name '\''*.tags'\'' -printf '\''%P\n'\'
+export DOCKER_RSA_KEY="~/.ssh/id_rsa.pub"
+export EDITOR=nvim
+export VISUAL=nvim
 
 
 #--------------------------------------------------------------------------
@@ -115,6 +118,9 @@ alias aoeu="setxkbmap fr"
 alias lkj="setxkbmap real-prog-dvorak"
 alias snth="setxkbmap fr"
 alias gbc="git branch | grep -v 'develop' | xargs git branch -D"
+alias yarn="corepack yarn"
+alias vim="$VIM"
+
 #alias pr="pull-request.sh"
 
 #--------------------------------------------------------------------------

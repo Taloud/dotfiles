@@ -29,6 +29,7 @@ return {
       end
 
       local lspconfig = require "lspconfig"
+      require("lspconfig.ui.windows").default_options.border = "single"
 
       local servers = {
         bashls = true,
@@ -37,8 +38,34 @@ return {
             semanticTokensProvider = vim.NIL,
           },
         },
-        cssls = true,
-        cssmodules_ls = true,
+        cssls = {
+          server_capabilities = {
+            documentFormattingProvider = false,
+          },
+        },
+        stylelint_lsp = {
+          filetypes = { "css", "scss" },
+          root_dir = require("lspconfig").util.root_pattern("package.json", ".git"),
+          settings = {
+            stylelintplus = {
+              autoFixOnSave = true,
+              validateOnSave = true,
+              -- see available options in stylelint-lsp documentation
+            },
+          },
+          server_capabilities = {
+            documentFormattingProvider = true,
+          },
+        },
+        somesass_ls = {
+          settings = {
+            somesass = {
+              suggestAllFromOpenDocument = true,
+              suggestFromUseOnly = true,
+            },
+          },
+        },
+        -- cssmodules_ls = true,
         html = {
           filetypes = { "twig", "html" },
           init_options = {
@@ -77,7 +104,8 @@ return {
             documentFormattingProvider = false,
           },
         },
-        biome = true,
+        -- biome = true,
+        eslint = true,
 
         jsonls = {
           settings = {
@@ -180,6 +208,7 @@ return {
         formatters_by_ft = {
           lua = { "stylua" },
           php = { "php_cs_fixer" },
+          javascript = { "eslint", "prettier" },
         },
       }
 
@@ -191,7 +220,7 @@ return {
         callback = function(args)
           require("conform").format {
             bufnr = args.buf,
-            lsp_fallback = true,
+            lsp_fallback = false,
             quiet = true,
           }
         end,

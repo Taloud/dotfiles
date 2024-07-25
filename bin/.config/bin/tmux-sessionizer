@@ -5,10 +5,10 @@ create_session() {
     tmux new-window -t $selected_name:2 -c $selected
     tmux new-window -t $selected_name:3 -c $selected
 
-     # Check if the directory is a Git repository before running lazygit
-    if git -C "$selected" rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-        tmux send-keys -t $selected_name:3 'lazygit' C-m
-    fi
+    # Check if the directory is a Git repository before running lazygit
+    # if git -C "$selected" rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    #     tmux send-keys -t $selected_name:3 'lazygit' C-m
+    # fi
 
     tmux select-window -t $selected_name:1
 }

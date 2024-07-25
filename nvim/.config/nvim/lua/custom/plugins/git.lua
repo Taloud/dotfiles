@@ -1,12 +1,13 @@
 return {
   { "tpope/vim-fugitive" },
-  {
-    "rhysd/git-messenger.vim",
-    config = function()
-      vim.keymap.set("n", "<leader>gb", ":GitMessenger<CR>")
-      vim.cmd [[let g:git_messenger_floating_win_opts = { 'border': 'single' }]]
-    end,
-  },
+  { "sindrets/diffview.nvim" },
+  -- {
+  --   "rhysd/git-messenger.vim",
+  --   config = function()
+  --     vim.keymap.set("n", "<leader>gb", ":GitMessenger<CR>")
+  --     vim.cmd [[let g:git_messenger_floating_win_opts = { 'border': 'single' }]]
+  --   end,
+  -- },
   {
     "lewis6991/gitsigns.nvim",
     lazy = false,
