@@ -37,6 +37,7 @@ return {
           "tsx",
           "twig",
           "typescript",
+          "nginx",
         },
         sync_install = false,
         highlight = { enable = true },

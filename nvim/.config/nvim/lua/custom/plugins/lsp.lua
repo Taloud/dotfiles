@@ -92,14 +92,14 @@ return {
         --   require("lazyvim.util").lsp.on_attach(function(client)
         --     if client.name == "eslint" then
         --       client.server_capabilities.documentFormattingProvider = true
-        --     elseif client.name == "tsserver" then
+        --     elseif client.name == "ts_ls" then
         --       client.server_capabilities.documentFormattingProvider = false
         --     end
         --   end)
         -- end,
 
         -- Probably want to disable formatting for this lang server
-        tsserver = {
+        ts_ls = {
           server_capabilities = {
             documentFormattingProvider = false,
           },

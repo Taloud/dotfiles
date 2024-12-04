@@ -35,10 +35,10 @@ pcall(require("telescope").load_extension, "ui-select")
 
 local builtin = require "telescope.builtin"
 
--- vim.keymap.set("n", "<C-p>", builtin.find_files { find_command = { "rg", "--files", "--hidden", "-g", "!.git" } })
 vim.keymap.set("n", "<C-p>", builtin.find_files)
--- vim.keymap.set("n", "<space>ft", builtin.git_files)
--- vim.keymap.set("n", "<space>fh", builtin.help_tags)
+vim.keymap.set("n", "<leader>pf", function()
+  builtin.find_files { find_command = { "rg", "--files", "--hidden", "--no-ignore-vcs" } }
+end)
 vim.keymap.set("n", "<leader>ps", builtin.live_grep)
 vim.keymap.set("n", "<leader>pb", builtin.buffers)
 vim.keymap.set("n", "<leader>pc", builtin.current_buffer_fuzzy_find)
