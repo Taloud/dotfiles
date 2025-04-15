@@ -14,7 +14,7 @@ return {
       desc = "Run File",
     },
     {
-      "<leader>tr",
+      "<leader>tn",
       function()
         require("neotest").run.run()
       end,

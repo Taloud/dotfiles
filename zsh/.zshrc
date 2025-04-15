@@ -55,6 +55,9 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey "^[[3~" delete-char
 
 # History
 HISTSIZE=5000
@@ -80,6 +83,7 @@ alias ls='ls --color'
 alias c='clear'
 
 eval "$(fzf --zsh)"
+eval "$(task --completion zsh)"
 
 #--------------------------------------------------------------------------
 # Configurations
@@ -129,6 +133,9 @@ alias snth="setxkbmap fr"
 alias gbc="git branch | grep -v 'develop' | xargs git branch -D"
 alias yarn="corepack yarn"
 alias vim="$VIM"
+alias gcp_db_dev='cloud-sql-proxy lefigaro-dev:europe-west1:lefigaro-dev-cloudsql-instance-33564d37=tcp:3306'
+alias gcp_db_preprod='cloud-sql-proxy lefigaro-preprod:europe-west1:lefigaro-preprod-cloudsql-instance-fb66ee9b=tcp:3306'
+alias gcp_db_prod='cloud-sql-proxy lefigaro-prod:europe-west1:lefigaro-prod-cloudsql-instance-55e0095a=tcp:3306'
 
 #alias pr="pull-request.sh"
 
@@ -153,3 +160,8 @@ if [ -f '/Users/hfeldstein/work/google-cloud-sdk/path.zsh.inc' ]; then . '/Users
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/hfeldstein/work/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hfeldstein/work/google-cloud-sdk/completion.zsh.inc'; fi
+
+# The next line enables shell command completion for symfony.
+if command -v symfony &>/dev/null; then
+    eval "$(symfony completion)"
+fi
